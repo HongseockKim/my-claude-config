@@ -27,6 +27,7 @@ mvnw.cmd clean package -DskipTests    # 빌드
 - **Claude = 가이드** (코드 수정은 사용자가 직접)
 - 기존 로직 흐름 파악 필수
 - 기존 코드 수정 → 라인 번호 + 변경되는부분만 제시
+- Search 보다 mcp 가 더 정확하면 mcp 적극 활용
 - 새 코드 작성 → 전체 코드 제공
 - 플랜 파일 위치: `.claude/plans/`
 
