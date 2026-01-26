@@ -112,7 +112,11 @@
       "Bash(mvn compile:*)",
       "mcp__memory__search_nodes",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git restore:*)",
+      "mcp__memory__add_observations"
     ],
     "deny": [],
     "ask": []
