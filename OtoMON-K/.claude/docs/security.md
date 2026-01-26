@@ -74,8 +74,14 @@ private String buildCspPolicy(String nonce) {
             "connect-src 'self' ws: wss: blob: https:; " +
             "worker-src 'self' blob:; " +
             "child-src 'self' blob:; " +
+            "frame-src 'self'; " +
+            "media-src 'self'; " +
+            "manifest-src 'self'; " +
             "frame-ancestors 'self'; " +
-            "object-src 'none'";
+            "object-src 'none'; " +
+            "base-uri 'self'; " +
+            "form-action 'self'; " +
+            "upgrade-insecure-requests";
 }
 ```
 ### 주요 설정 설명
@@ -109,6 +115,40 @@ private String buildCspPolicy(String nonce) {
 ```java
 .requiresChannel(channel -> channel.anyRequest().requiresSecure())
 ```
+
+### Cross-Origin Isolation (COEP/COOP)
+
+**설정 위치**: `filter/CspNonceFilter.java:39-41`
+
+```java
+// Cross-Origin-Embedder-Policy: Spectre 등 사이드채널 공격 방어
+response.setHeader("Cross-Origin-Embedder-Policy", "credentialless");
+
+// Cross-Origin-Opener-Policy: 브라우징 컨텍스트 격리
+response.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+
+// Cross-Origin-Resource-Policy: 리소스 로드 출처 제한
+response.setHeader("Cross-Origin-Resource-Policy", "same-origin");
+
+// Server 헤더 숨김: Tomcat 버전 정보 노출 방지
+response.setHeader("Server", "");
+```
+
+| 헤더 | 값 | 설명 |
+|------|-----|------|
+| `COEP` | `credentialless` | 외부 리소스(CDN) 호환성 유지하며 격리 |
+| `COOP` | `same-origin-allow-popups` | 같은 출처 + 팝업 허용 |
+| `CORP` | `same-origin` | 같은 출처에서만 리소스 로드 허용 |
+| `Server` | `""` (빈 값) | 서버 버전 정보 숨김 (CVE 스캔 회피) |
+
+**옵션 설명**
+- `COEP: require-corp` - 가장 엄격, 외부 CDN 사용 시 문제 발생
+- `COEP: credentialless` - 자격증명 없이 교차출처 요청 허용 (권장)
+- `COOP: same-origin` - 팝업 차단됨
+- `COOP: same-origin-allow-popups` - 팝업 기능 유지 (권장)
+- `CORP: same-origin` - 같은 출처만 허용 (권장)
+- `CORP: same-site` - 서브도메인 포함 허용
+- `CORP: cross-origin` - 모든 출처 허용 (CDN용)
 
 ---
 

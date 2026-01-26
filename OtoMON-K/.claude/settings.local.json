@@ -106,7 +106,13 @@
       "Skill(using-skills)",
       "Bash(xcopy:*)",
       "Bash(copy /Y \"C:\\\\Users\\\\user\\\\IdeaProjects\\\\OtoMON-K\\\\.mcp.json\" \"C:\\\\Users\\\\user\\\\my-claude-configs\\\\OtoMON-K\\\\.mcp.json\")",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "mcp__memory__open_nodes",
+      "mcp__memory__create_relations",
+      "Bash(mvn compile:*)",
+      "mcp__memory__search_nodes",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
