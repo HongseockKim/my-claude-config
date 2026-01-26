@@ -9,9 +9,7 @@
         "-y",
         "@modelcontextprotocol/server-memory"
       ],
-      "env": {
-        "MEMORY_FILE_PATH": "C:/Users/user/my-claude-configs/OtoMON-K/.claude/memory.json"
-      }
+      "env": {}
     },
     "sequential-thinking": {
       "type": "stdio",
