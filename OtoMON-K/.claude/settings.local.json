@@ -119,7 +119,8 @@
       "mcp__memory__add_observations",
       "mcp__filesystem__search_files",
       "mcp__memory__delete_entities",
-      "mcp__filesystem__list_directory"
+      "mcp__filesystem__list_directory",
+      "mcp__filesystem__write_file"
     ],
     "deny": [],
     "ask": []

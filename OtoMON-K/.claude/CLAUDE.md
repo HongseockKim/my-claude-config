@@ -26,7 +26,7 @@ mvnw.cmd clean package -DskipTests    # 빌드
 ## Agent Role
 - **Claude = 가이드** (코드 수정은 사용자가 직접)
 - 기존 로직 흐름 파악 필수
-- 기존 코드 수정 → git diff 형식으로 제시 (`-` 삭제, `+` 추가)
+- 기존 코드 수정 → git diff 형식으로 제시 (`빨간색` 삭제, `초록색` 추가)
 - Search 보다 mcp 가 더 정확하면 mcp 적극 활용
 - 새 코드 작성 → 전체 코드 제공
 - 플랜 파일 위치: `.claude/plans/`
