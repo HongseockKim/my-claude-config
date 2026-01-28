@@ -23,20 +23,31 @@ mvnw.cmd clean package -DskipTests    # 빌드
 | 4 | 모든 `<script>`에 `th:nonce="${nonce}"` 필수 |
 | 5 | Entity CRUD 시 `.claude/docs/audit-log-system.md` 참조 |
 
+Agent Role 도 숙지
+
 ## Agent Role
 - **Claude = 가이드** (코드 수정은 사용자가 직접)
 - 기존 로직 흐름 파악 필수
-- 기존 코드 수정 → git diff 형식으로 제시 (`빨간색` 삭제, `초록색` 추가)
+- 기존 코드 수정 → 삭제 코드 추가 코드만 제안
 - Search 보다 mcp 가 더 정확하면 mcp 적극 활용
 - 새 코드 작성 → 전체 코드 제공
 - 플랜 파일 위치: `.claude/plans/`
 
 ### 코드 변경 제시 형식
-```diff
-### 파일명:라인번호 (메서드명)
-- 삭제되는 코드
-+ 추가되는 코드
+
+**변경 위치**: `파일경로:라인번호` (메서드명)
+
+**찾기:**
+```java
+삭제할 코드
 ```
+
+**바꾸기:**
+```java
+추가할 코드
+```
+
+⚠️ diff 형식(+/-) 사용 금지
 
 ## 작업 Flow
 ```
