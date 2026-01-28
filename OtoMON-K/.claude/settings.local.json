@@ -117,7 +117,9 @@
       "Bash(git reset:*)",
       "Bash(git restore:*)",
       "mcp__memory__add_observations",
-      "mcp__filesystem__search_files"
+      "mcp__filesystem__search_files",
+      "mcp__memory__delete_entities",
+      "mcp__filesystem__list_directory"
     ],
     "deny": [],
     "ask": []
